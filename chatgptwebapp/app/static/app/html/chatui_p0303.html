@@ -1,0 +1,32 @@
+<div id="chatul" class="m-b-0 chatul">
+    <div class="clearfix li-option">
+        <div class="message-data smartphone-display">
+            <img class="ai-photo" alt="avatar">
+        </div>
+        <div class="message my-message markdown-body smartphone-padding"><span id="expert_firstmessage"></span></div>
+    </div>
+    <div class="clearfix li-option">
+        <div class="message-data smartphone-display">
+            <img class="me-photo" alt="avatar">
+        </div>
+        <div class="message other-message smartphone-padding"> 
+            <label for="multiselect">対象とする資料 :</label><button class="btn btn-outline-secondary btn-sm float-right" onclick="detail_Button_Click()" data-bs-toggle="modal" data-bs-target="#otherModal">資料参照</button>
+            <br/>
+            <div id="multiselectdiv"></div>
+            <br/>
+            <div id="in_label_and_textare"></div>
+            <div class="text-right margin-top-10">
+                <button class="btn btn-primary btn-large" id="chat_button" name="start_button" onclick="chat_Button_Click()">
+                    <span id="chat_button_spin" class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
+                    OK 
+                </button>
+            </div>
+        </div>
+    </div>
+    <div id="outputdiv" class="clearfix li-option ai-balloon">
+        <div class="message-data smartphone-display">
+            <img class="ai-photo" alt="avatar">
+        </div>
+        <div class="message my-message markdown-body smartphone-padding" id="outmessege"></div>
+    </div>
+</div>

@@ -1,0 +1,12 @@
+node_modules/
+/test-results/
+/playwright-report/
+/playwright/.cache/
+env/
+.venv/
+.vscode/settings.json
+temp/*
+!temp/dummy.csv
+/db.sqlite3
+/.env
+/app/static/app/preset/*

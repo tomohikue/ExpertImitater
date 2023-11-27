@@ -1,0 +1,32 @@
+<div id="chatul" class="m-b-0 chatul">
+    <div class="clearfix li-option">
+        <div class="message-data smartphone-display">
+            <img class="ai-photo" alt="avatar">
+        </div>
+        <div class="message my-message markdown-body smartphone-padding"><span id="expert_firstmessage"></span></div>
+    </div>
+    <div class="clearfix li-option">
+        <div class="message-data smartphone-display">
+            <img class="me-photo" alt="avatar">
+        </div>
+        <div class="message other-message smartphone-padding"> 
+            <div id="in_label_and_textare"></div>
+            <div class="mb-3">
+                <label for="formFileSm" class="form-label">資料登録(PDF):</label>
+                <input class="form-control form-control-sm" id="formFileSm" type="file">
+            </div>
+            <div class="text-right margin-top-10">
+                <button class="btn btn-primary btn-large" id="chat_button" name="start_button" onclick="chat_Button_Click()">
+                    <span id="chat_button_spin" class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
+                    登録 
+                </button>
+            </div>
+        </div>
+    </div>
+    <div id="outputdiv" class="clearfix li-option ai-balloon">
+        <div class="message-data smartphone-display">
+            <img class="ai-photo" alt="avatar">
+        </div>
+        <div class="message my-message markdown-body smartphone-padding" id="outmessege"></div>
+    </div>
+</div>

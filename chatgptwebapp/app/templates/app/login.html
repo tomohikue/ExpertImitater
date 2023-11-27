@@ -1,0 +1,40 @@
+{% extends "app/login_layout.html" %}
+
+{% block content %}
+
+  <link rel="preconnect" href="https://fonts.gstatic.com">
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500&display=swap" rel="stylesheet"> 
+  
+  <div class="container">
+    <form action="." method="post" enctype="multipart/form-data">
+      {% csrf_token %}
+        <p>Welcome<br/>Expert Imitator
+        </p>
+      <input type="text" name="username" placeholder="USERNAME" maxlength="150" required="" id="id_username" value="msuser"><br>
+      <input type="password" name="password" placeholder="Password" required="" id="id_password"><br>
+      {% comment %} <input type="button" value="Log in"> {% endcomment %}
+      <input type="hidden" name="next" value="/" />
+      <input type="submit" value="Log in" class="login-button"/><br>
+      {% if form.errors %}
+      <p class="validation-summary-errors">Please enter a correct user name and password.</p>
+      {% endif %}  
+    </form>
+  
+    <div class="drops">
+      <div class="drop drop-1"></div>
+      <div class="drop drop-2"></div>
+      <div class="drop drop-3"></div>
+      <div class="drop drop-4"></div>
+      <div class="drop drop-5"></div>
+    </div>
+  </div>
+
+{% endblock %}
+
+
+{% block scripts %}
+
+    {% load static %}
+<script src="{% static 'app/scripts/jquery.validate.min.js' %}"></script>
+
+{% endblock %}

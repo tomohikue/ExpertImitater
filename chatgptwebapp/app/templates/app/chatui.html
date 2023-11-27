@@ -1,0 +1,169 @@
+{% extends "app/layout.html" %}
+
+{% block content %}
+{% load static %}
+
+<div id="all-contents" class="container-fluid container-option page-allcontent">
+    <div id="title-header" class="row clearfix page-header">
+        <div class="col-lg-4" style="max-height:40px">
+            <button class="btn menu-btn" id="menuopen_button" onclick="menuopen_Button_Click()">
+                <svg xmlns="http://www.w3.org/2000/svg" width="15" height="14" id="list">
+                    <path fill="none" fill-rule="evenodd" stroke="#fff" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M1 1h13M1 7h13M1 13h13"></path>
+                </svg>
+            </button>
+            <span id="app_tittle" style="font-size:25px;font-weight:bold;margin-left:30px;">Expert Imitator </span>
+        </div>
+        <div class="col-lg-8 d-flex align-items-center smartphone-display">
+            <span class="" style="font-size:14px;"> 各専門家になりきったAIが、「スキルが上の下程度の人間が1週間かけて作るレベルの回答」を、即時回答いたします。</span>
+        </div>
+    </div>
+
+    <div class="row chat-app page-body vetical-controll-parent">
+        <div id="plist" class="col people-list vetical-controll page-body-child">
+            <div class="input-group">
+                <div class="btn-group" role="group" aria-label="Basic radio toggle button group" style="margin:auto;">
+                    <input type="radio" class="btn-check" name="btnradio" id="btnradio1" autocomplete="off" checked>
+                    <label class="btn btn-outline-secondary narabi_btn" for="btnradio1">エクスパート順</label>
+                    
+                    <input type="radio" class="btn-check" name="btnradio" id="btnradio2" autocomplete="off">
+                    <label class="btn btn-outline-secondary narabi_btn" for="btnradio2">いいね数順</label>
+                    
+                    <input type="radio" class="btn-check" name="btnradio" id="btnradio3" autocomplete="off">
+                    <label class="btn btn-outline-secondary narabi_btn" for="btnradio3">お気に入り数順</label>
+                    </div>
+            </div>
+            <!-- Peple List area -->
+            <ul id="plistul" class="list-unstyled chat-list mt-2 mb-0">
+            </ul>
+        </div>
+        <div id="chatui" class="col chat page-body-child">
+                <div class="chat-header clearfix">
+                    <div class="row">
+                        <div>
+                            <select id="browseflg" class="form-select tablet-display" aria-label="最新情報の取得" onchange="changeColor(this)" style="width:240px;float:right;height:45px;margin-right:30px;">
+                                <option value="off">Browse with Bing: Off</option>
+                                <option value="on">Browse with Bing: On</option>
+                                <option value="auto">Browse with Bing: Auto</option>
+                                </select>
+                            <a href="javascript:void(0);" data-toggle="modal" data-target="#view_info">
+                                <img id="expert-photo" alt="avatar">
+                            </a>
+                            <div class="chat-about">
+                                <span><small><div id="expert-role"></div></small></span>
+                                <br/>
+                                <span><div id="expert-greeting" class="tablet-display"></div></span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div style="height:100%">
+                    <!-- Chat area -->
+                    <div id="chatui-pp" class="chat-history smartphone-padding2 vetical-controll">
+                    </div>
+                </div>
+            <!-- Chat input area -->
+            <div id="input-textarea" class="chat-message inputtextarea-header clearfix">
+                <div class="inputtextarea-group tooltip1" style="display: block;">
+                    <div role="button" tabindex="0" id="clear_button" name="clear_button" onclick="clear_Button_Click(this)" aria-label="Clear session">
+                        <svg class="_clearChatBroom_1teaz_126 ___12fm75w f1w7gpdv fez10in fg4l7m0" aria-hidden="true" fill="currentColor" width="1em" height="1em" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg" style="background: radial-gradient(109.81% 107.82% at 100.1% 90.19%, rgb(15, 108, 189) 33.63%, rgb(45, 135, 195) 70.31%, rgb(141, 221, 216) 100%); cursor: pointer;">
+                            <path d="M17.91 2.18c.2.2.2.51 0 .7l-5.32 5.33a4.5 4.5 0 0 1-.34 6l-.66.66-2.09 3.48a.5.5 0 0 1-.78.1l-7.07-7.08a.5.5 0 0 1 .1-.78L5.22 8.5l.66-.66a4.5 4.5 0 0 1 5.99-.34l5.32-5.32c.2-.2.51-.2.71 0ZM6.24 8.9l4.95 4.95.36-.35A3.5 3.5 0 1 0 6.6 8.55l-.36.35Zm-.78.63L2.8 11.12l6.16 6.17 1.6-2.66-5.11-5.1Z" fill="currentColor">
+                            </path>
+                        </svg>
+                    </div> 
+                    <div role="button" tabindex="0" id="print_button" name="print_button" onclick="print_Button_Click(this)" aria-label="print">
+                            {% comment %} <svg class="_printChatButton" viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg" style="background: radial-gradient(109.81% 107.82% at 100.1% 90.19%, rgb(15, 108, 189) 33.63%, rgb(45, 135, 195) 70.31%, rgb(141, 221, 216) 100%); cursor: pointer; bottom:70px">
+                                <path d="M45.81,19.56a9.5,9.5,0,0,0-6.26-3.86q0-.44,0-0.88a12.72,12.72,0,0,0-25.29-2,13.34,13.34,0,0,0-2.22-.18C5.42,12.67,0,17.59,0,23.64S3.64,33.88,9.36,34.39l29.09,0C43.2,34.19,48,31.1,48,25.61A9.52,9.52,0,0,0,45.81,19.56Z" fill="#aedff5"/><path d="M31.52,38.62a2,2,0,0,0-2.82-.22L26,40.69V22.92a2,2,0,0,0-4,0V40.67l-2.7-2.31a2,2,0,1,0-2.61,3l6,5.13,0.06,0,0.12,0.09,0.22,0.13,0.14,0.06,0.25,0.08,0.12,0A2,2,0,0,0,24,47h0a2,2,0,0,0,.39,0l0.11,0,0.27-.09,0.06,0,0,0a2,2,0,0,0,.42-0.26l6-5.09A2,2,0,0,0,31.52,38.62Z" fill="#38b1e7"/>
+                            </svg> {% endcomment %}
+                            {% comment %} <svg class="_printChatButton" xmlns="http://www.w3.org/2000/svg" fill="currentColor" class="bi bi-save-fill" viewBox="0 0 16 16" style="background: radial-gradient(109.81% 107.82% at 100.1% 90.19%, rgb(15, 108, 189) 33.63%, rgb(45, 135, 195) 70.31%, rgb(141, 221, 216) 100%); cursor: pointer; bottom:70px"> 
+                                <path d="M8.5 1.5A1.5 1.5 0 0 1 10 0h4a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V2a2 2 0 0 1 2-2h6c-.314.418-.5.937-.5 1.5v7.793L4.854 6.646a.5.5 0 1 0-.708.708l3.5 3.5a.5.5 0 0 0 .708 0l3.5-3.5a.5.5 0 0 0-.708-.708L8.5 9.293V1.5z"/> 
+                            </svg> {% endcomment %}
+                            
+                            <svg class="_printChatButton" xmlns="http://www.w3.org/2000/svg" fill="currentColor" class="bi bi-box-arrow-down" viewBox="0 0 16 16" style="background: radial-gradient(109.81% 107.82% at 100.1% 90.19%, rgb(15, 108, 189) 33.63%, rgb(45, 135, 195) 70.31%, rgb(141, 221, 216) 100%); cursor: pointer; bottom:70px"> 
+                                <path fill-rule="evenodd" d="M3.5 10a.5.5 0 0 1-.5-.5v-8a.5.5 0 0 1 .5-.5h9a.5.5 0 0 1 .5.5v8a.5.5 0 0 1-.5.5h-2a.5.5 0 0 0 0 1h2A1.5 1.5 0 0 0 14 9.5v-8A1.5 1.5 0 0 0 12.5 0h-9A1.5 1.5 0 0 0 2 1.5v8A1.5 1.5 0 0 0 3.5 11h2a.5.5 0 0 0 0-1h-2z"/> <path fill-rule="evenodd" d="M7.646 15.854a.5.5 0 0 0 .708 0l3-3a.5.5 0 0 0-.708-.708L8.5 14.293V5.5a.5.5 0 0 0-1 0v8.793l-2.146-2.147a.5.5 0 0 0-.708.708l3 3z"/> 
+                            </svg>
+                    </div> 
+                    <div>
+                        <textarea id="inputtextarea" class="form-control inputtextarea inputbox_shadow inputtextarea-body" placeholder="メッセージ" aria-label="With textarea" oninput="textarea_Output(this)"></textarea>
+                        <div class="_questionInputBottomBorder_pe9s7_41 inputtextarea-body"></div>
+                    </div>
+                    <div class="description1">
+                        ■キーボードショートカット<br>
+                        <table>
+                            <tr>
+                                <td style="text-align:center;">Enter</td>
+                                <td>: メッセージを送信</td>
+                            </tr>
+                            <tr>
+                                <td style="text-align:center;">Shift+Enter</td>
+                                <td>: 改行</td>
+                            </tr>
+                            <tr>
+                                <td style="text-align:center;">/h</td>
+                                <td>: 履歴を表示 ※今後実装</td>
+                            </tr>
+                        </table>
+                    </div>
+                    <button class="btn btn-secondary btn-large inputbox_shadow sendbutton inputtextarea-side-button" id="send_button" onclick='input_Textarea_Button_Click(this)'>
+                        <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor" class="bi bi-send" viewBox="0 -2 20 20" >
+                        <path d="M15.854.146a.5.5 0 0 1 .11.54l-5.819 14.547a.75.75 0 0 1-1.329.124l-3.178-4.995L.643 7.184a.75.75 0 0 1 .124-1.33L15.314.037a.5.5 0 0 1 .54.11ZM6.636 10.07l2.761 4.338L14.13 2.576 6.636 10.07Zm6.787-8.201L1.591 6.602l4.339 2.76 7.494-7.493Z"/>
+                        </svg>
+                    </button>
+                    <button class="btn btn-secondary btn-large inputbox_shadow stopbutton inputtextarea-side-button" id="stop_button" onclick='sse_Close_Button_Click()' style="display:none">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-player-stop" width="25" height="25" viewBox="0 4 25 25" preserveAspectRatio="none" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                            <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+                            <path d="M5 5m0 2a2 2 0 0 1 2 -2h10a2 2 0 0 1 2 2v10a2 2 0 0 1 -2 2h-10a2 2 0 0 1 -2 -2z"></path>
+                            </svg>
+                    </button>
+
+                    </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Prompt Modal -->
+<div class="modal fade" id="promptModal" tabindex="-1" aria-labelledby="promptModalLabel" aria-hidden="false">
+    <div class="modal-dialog" style="max-width:1000px;">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="promptModalLabel">{% comment %} labelを差し替える {% endcomment %}</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body" id="modal-body-id">
+                {% comment %} 中身を画面によって差し替える {% endcomment %}
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Catalog Modal -->
+<div class="modal fade" id="catalogModal" tabindex="-1" aria-labelledby="catalogModalLabel" aria-hidden="false">
+    <div class="modal-dialog" style="max-width:1000px;">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="catalogModalLabel">{% comment %} labelを差し替える {% endcomment %}</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body" id="modal-catalog-body-id">
+                {% comment %} 中身を画面によって差し替える {% endcomment %}
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Other Modal -->
+<div class="modal fade" id="otherModal" tabindex="-1" aria-labelledby="otherModalLabel" aria-hidden="false">
+    <div class="modal-dialog" style="max-width:1000px;">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="otherModalLabel">{% comment %} labelを差し替える {% endcomment %}</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body" id="modal-other-body-id">
+                {% comment %} 中身を画面によって差し替える {% endcomment %}
+            </div>
+        </div>
+    </div>
+</div>
+
+
+{% endblock %}
+

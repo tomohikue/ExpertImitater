@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ title }}</title>
+    {% load static %}
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    {% comment %} <link rel="stylesheet" type="text/css" href="{% static 'app/content/site.css' %}" /> {% endcomment %}
+    <link rel="stylesheet" type="text/css" href="{% static 'app/content/login.css' %}" />
+    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" />
+    <meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0">
+
+    <link rel="apple-touch-icon" sizes="57x57" href="{% static 'app/icon/apple-icon-57x57.png' %}" />
+    <link rel="apple-touch-icon" sizes="60x60" href="{% static 'app/icon/apple-icon-60x60.png' %}" />
+    <link rel="apple-touch-icon" sizes="72x72" href="{% static 'app/icon/apple-icon-72x72.png' %}" />
+    <link rel="apple-touch-icon" sizes="76x76" href="{% static 'app/icon/apple-icon-76x76.png' %}" />
+    <link rel="apple-touch-icon" sizes="114x114" href="{% static 'app/icon/apple-icon-114x114.png' %}" />
+    <link rel="apple-touch-icon" sizes="120x120" href="{% static 'app/icon/apple-icon-120x120.png' %}" />
+    <link rel="apple-touch-icon" sizes="144x144" href="{% static 'app/icon/apple-icon-144x144.png' %}" />
+    <link rel="apple-touch-icon" sizes="152x152" href="{% static 'app/icon/apple-icon-152x152.png' %}" />
+    <link rel="apple-touch-icon" sizes="180x180" href="{% static 'app/icon/apple-icon-180x180.png' %}" />
+    <link rel="icon" type="image/png" sizes="192x192"  href="{% static 'app/icon/android-icon-192x192.png' %}" />
+    <link rel="icon" type="image/png" sizes="32x32" href="{% static 'app/icon/favicon-32x32.png' %}" />
+    <link rel="icon" type="image/png" sizes="96x96" href="{% static 'app/icon/favicon-96x96.png' %}" />
+    <link rel="icon" type="image/png" sizes="16x16" href="{% static 'app/icon/favicon-16x16.png' %}" />
+    <link rel="manifest" href="{% static 'app/icon/manifest.json' %}" crossorigin="use-credentials" />
+    <meta name="msapplication-TileColor" content="#ffffff">
+    <meta name="msapplication-TileImage" content="{% static 'app/icon/ms-icon-144x144.png' %}" />
+    <meta name="theme-color" content="#ffffff">
+
+</head>
+
+
+<body>
+
+    {% comment %} <div class="container-fluid body-content"> {% endcomment %}
+    {% block content %}{% endblock %}
+    {% comment %} </div> {% endcomment %}
+
+    <script src="{% static 'app/scripts/lib/sse.js' %}"></script>
+    <script src="{% static 'app/scripts/lib/marked.min.js' %}"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.7.0/highlight.min.js"></script>
+    {% comment %} <script src="{% static 'app/content/highlight.js/es/core.js' %}"></script> {% endcomment %}
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script src="{% static 'app/scripts/lib/respond.js' %}"></script>
+    <script src="{% static 'app/scripts/lib/modernizr-2.6.2.js' %}"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+    <script src="{% static 'app/scripts/app/chatpage.js' %}"></script>
+
+
+{% block scripts %}{% endblock %}
+
+</body>
+</html>

@@ -1,0 +1,21 @@
+{
+  "name": "myproject",
+  "version": "1.0.0",
+  "devDependencies": {
+    "@playwright/test": "^1.35.0",
+    "@types/jquery": "^3.3.24"
+  },
+  "dependencies": {
+    "@types/marked": "^4.3.0",
+    "applicationinsights": "^2.6.0",
+    "highlight.js": "^11.8.0",
+    "marked": "^5.0.2",
+    "sse.js": "^0.6.1",
+    "typed-rest-client": "^1.8.11"
+  },
+  "scripts": {
+    "test:chrome": "npx playwright test --headed --browser=chromium",
+    "test:firefox": "npx playwright test --headed --browser=firefox",
+    "test:safari": "npx playwright test test.ts --project='Mobile Safari'"
+  }
+}
