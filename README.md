@@ -9,6 +9,27 @@ https://tomohiku-gpt-web.azurewebsites.net/
 
 ※ デモ環境ではGPT-4との通信はできずErrorになりますが、出力例が各ページに用意されているので利用イメージがわかります。
 
+## 言語とフレームワーク
+
+- 言語
+  - Frontend: Typescript + html + css
+  - Backend: Python
+
+- Framework
+  - Web: Django
+
+- DB
+  - RDB: SQLite3 or PostgreSql
+  - Vector DB: PostgreSql
+
+- Storage
+  - Azure Storage Blob
+
+- Log
+  - Azure Application Insight
+
+※生成AI系のFramework（例えばSemantic Kernel、Langchainなど）は、部分的に部品を使っていますが、ほとんど使っていません。
+
 ## 機能
 
 ### 実装している主な機能
