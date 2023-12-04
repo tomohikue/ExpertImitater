@@ -9,6 +9,10 @@ https://tomohiku-gpt-web.azurewebsites.net/
 
 ※ デモ環境ではGPT-4との通信はできずErrorになりますが、出力例が各ページに用意されているので利用イメージがわかります。
 
+## 機能説明ブログ
+Qiita
+https://qiita.com/tomohiku/items/6363e4df11f3750344db
+
 ## 言語とフレームワーク
 
 - 言語
