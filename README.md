@@ -496,3 +496,7 @@ APPINSIGHT_KEY=""
 # Demoモードを有効にするかどうか True or False
 DEMO_MODE_ENABLED="True"
 ```
+
+# その他
+- ImageフォルダにImageはすべてDALL·Eで作成したものです。
+- よろしければStarをつけてもらえると励みになります。
